@@ -4,6 +4,8 @@ let renderedResolve, reportRendered = new Promise((res, rej) => { renderedResolv
 // Get models. models contains enums that can be used.
 models = window['powerbi-client'].models;
 
+const Division = "APP"
+
 // Embed a Power BI report in the given HTML element with the given configurations
 function embedPowerBIReport() {
     let accessToken = EMBED_ACCESS_TOKEN;
