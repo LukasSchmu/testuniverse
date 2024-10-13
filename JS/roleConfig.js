@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userRole = "OC"; // Ändere zu "HQ" oder lade die Rolle dynamisch
+    const userRole = "HQ"; // Ändere zu "HQ" oder lade die Rolle dynamisch
 
     // Konfiguration des Menüs basierend auf der Rolle
     const roleConfig = {
