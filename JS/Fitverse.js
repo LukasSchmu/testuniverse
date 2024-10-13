@@ -65,8 +65,17 @@ await reportLoaded;  // Code to run after report is loaded
 // Insert the code that runs after report is fully rendered
 await reportRendered;
 
-// Beispielkonstante, die entweder "APP" oder "FTW" sein kann
-const Division = "APP";  // Ändere diesen Wert, um zu testen
+
+// Funktion zum Aktualisieren der Division basierend auf dem Status des Toggles
+function updateDivision() {
+    const toggle = document.getElementById("toggleSwitch");
+    const Division = toggle.checked ? "APP" : "FTW"; // "APP" wenn aktiviert, "FTW" wenn nicht aktiviert
+    console.log(Division); // Gibt den aktuellen Status in der Konsole aus
+}
+
+// Event Listener für den Toggle
+document.getElementById("toggleSwitch").addEventListener("change", updateDivision);
+
 
 // Funktion zum Setzen der Seite basierend auf dem Wert der Konstante
 async function setInitialPage(report, Division) {
