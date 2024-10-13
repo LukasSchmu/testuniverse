@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userRole = "HQ"; // Ändere zu "HQ" oder lade die Rolle dynamisch
+    const userRole = "OC"; // Ändere zu "HQ" oder lade die Rolle dynamisch
 
     // Konfiguration des Menüs basierend auf der Rolle
     const roleConfig = {
         HQ: ["overview-link", "test-level-link", "fitverse-link", "wear-link", "performance-link", "lab-link", "biomechanical-link"],
-        OC: ["wear-link", "performance-link", "lab-link"]
+        OC: ["fitverse-link", "performance-link", "lab-link"]
     };
 
     // ===== Menükonfiguration basierend auf der Rolle =====
