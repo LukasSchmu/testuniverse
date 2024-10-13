@@ -5,7 +5,7 @@ let renderedResolve, reportRendered = new Promise((res, rej) => { renderedResolv
 models = window['powerbi-client'].models;
 
 // Embed a Power BI report in the given HTML element with the given configurations
-function embedPowerBIReport() {
+async function embedPowerBIReport() {
     let accessToken = EMBED_ACCESS_TOKEN;
     let embedUrl = EMBED_URL;
     let embedReportId = REPORT_ID;
@@ -38,12 +38,14 @@ function embedPowerBIReport() {
     report.on("loaded", async function () {
         console.log("Report loaded");
 
-        // Set the page immediately after loading
-        const Division = "FTW";  // Example: Change the division as needed
+        // Set slicer filters immediately after loading
+        await setSlicerFilters();
+
+        // After setting slicers, check the division
+        const Division = await checkDivision();
         await setInitialPage(report, Division);
 
         loadedResolve();
-        report.off("loaded");
     });
 
     report.off("error");
@@ -52,30 +54,81 @@ function embedPowerBIReport() {
     });
 
     report.off("rendered");
-    report.on("rendered", function () {
+    report.on("rendered", async function () {
         renderedResolve();
-        report.off("rendered");
     });
+
+    // Wait for the report to load/render
+    await reportLoaded;
+    await reportRendered;
+
+    console.log("Report fully loaded and rendered.");
 }
 
-// Embed the Power BI report and wait for it to load/render
-embedPowerBIReport();
-await reportLoaded;  // Code to run after report is loaded
+// Function to set slicer filters
+async function setSlicerFilters() {
+    // Create the filter objects
+    const filterAPP = {
+        $schema: "http://powerbi.com/product/schema#basic",
+        target: {
+            table: "APP_PRD_User",
+            column: "Name"
+        },
+        filterType: models.FilterType.Basic,
+        operator: "In",
+        values: ["Lachner, Markus"] // Change this value to what you need
+    };
 
-// Insert the code that runs after report is fully rendered
-await reportRendered;
+    const filterFTW = {
+        $schema: "http://powerbi.com/product/schema#basic",
+        target: {
+            table: "FTW_PRD_User",
+            column: "Name"
+        },
+        filterType: models.FilterType.Basic,
+        operator: "In",
+        values: ["Lachner, Markus"] // Change this value to what you need
+    };
 
+    try {
+        const pages = await report.getPages();
 
-// Funktion zum Aktualisieren der Division basierend auf dem Status des Toggles
-function updateDivision() {
-    const toggle = document.getElementById("toggleSwitch");
-    const Division = toggle.checked ? "APP" : "FTW"; // "APP" wenn aktiviert, "FTW" wenn nicht aktiviert
-    console.log(Division); // Gibt den aktuellen Status in der Konsole aus
+        // Retrieve the active page.
+        let page = pages.filter(function (page) {
+            return page.isActive;
+        })[0];
+
+        const visuals = await page.getVisuals();
+
+        // Set filters for APP slicer
+        let slicerAPP = visuals.filter(function (visual) {
+            return visual.type === "slicer" && visual.name === "c18533f5b16de07e7c5e"; // Use the actual name of your APP slicer
+        })[0];
+
+        // Set the slicer state with the APP filter.
+        await slicerAPP.setSlicerState({ filters: [filterAPP] });
+        console.log("Simple filter was set on the APP slicer.");
+
+        // Set filters for FTW slicer
+        let slicerFTW = visuals.filter(function (visual) {
+            return visual.type === "slicer" && visual.name === "3c61d5ec1508373cb63e"; // Use the actual name of your FTW slicer
+        })[0];
+
+        // Set the slicer state with the FTW filter.
+        await slicerFTW.setSlicerState({ filters: [filterFTW] });
+        console.log("Simple filter was set on the FTW slicer.");
+    } catch (errors) {
+        console.log("Error setting slicer filters:", errors);
+    }
 }
 
-// Event Listener für den Toggle
-document.getElementById("toggleSwitch").addEventListener("change", updateDivision);
-
+// Function to check the division logic
+async function checkDivision() {
+    // Logic to determine the division, returning "APP" or "FTW"
+    // For example purposes, we can return a hardcoded value or implement actual logic
+    const Division = "FTW"; // Replace with actual logic
+    return Division;
+}
 
 // Funktion zum Setzen der Seite basierend auf dem Wert der Konstante
 async function setInitialPage(report, Division) {
@@ -95,11 +148,10 @@ async function setInitialPage(report, Division) {
     try {
         await report.setPage(pageName);
         console.log(`Seite wurde auf: ${pageName} gesetzt.`);
-    }
-    catch (errors) {
+    } catch (errors) {
         console.error("Fehler beim Setzen der Seite:", errors);
     }
 }
 
-// Beispiel: Initialisiere die Seite basierend auf der Konstante
-setInitialPage(report, Division);
+// Embed the Power BI report
+embedPowerBIReport();
