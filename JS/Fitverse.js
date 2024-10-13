@@ -4,8 +4,6 @@ let renderedResolve, reportRendered = new Promise((res, rej) => { renderedResolv
 // Get models. models contains enums that can be used.
 models = window['powerbi-client'].models;
 
-const Division = "APP"
-
 // Embed a Power BI report in the given HTML element with the given configurations
 function embedPowerBIReport() {
     let accessToken = EMBED_ACCESS_TOKEN;
@@ -67,37 +65,32 @@ await reportLoaded;  // Code to run after report is loaded
 // Insert the code that runs after report is fully rendered
 await reportRendered;
 
-// Function to set the initial page based on Division
+// Beispielkonstante, die entweder "APP" oder "FTW" sein kann
+const Division = "APP";  // Ändere diesen Wert, um zu testen
+
+// Funktion zum Setzen der Seite basierend auf dem Wert der Konstante
 async function setInitialPage(report, Division) {
     let pageName;
 
+    // Überprüfe den Wert von Division und setze den entsprechenden Seitennamen
     if (Division === "APP") {
-        pageName = "0cceab97c8a564c2e4ea";  // Page for "APP"
+        pageName = "0cceab97c8a564c2e4ea";  // Seite für "APP"
     } else if (Division === "FTW") {
-        pageName = "d05390902dc1467be33e";  // Page for "FTW"
+        pageName = "d05390902dc1467be33e";  // Seite für "FTW"
     } else {
-        console.error("Unknown Division value:", Division);
-        return;
+        console.error("Unbekannter Wert für Division:", Division);
+        return;  // Beende die Funktion, falls der Wert ungültig ist
     }
 
+    // Versuche, die Seite zu ändern
     try {
         await report.setPage(pageName);
-        console.log(`Page set to: ${pageName}`);
+        console.log(`Seite wurde auf: ${pageName} gesetzt.`);
     }
     catch (errors) {
-        console.error("Error setting the page:", errors);
+        console.error("Fehler beim Setzen der Seite:", errors);
     }
 }
 
-// Example function to get all report pages (for debugging)
-async function getReportPages(report) {
-    try {
-        const pages = await report.getPages();
-        pages.forEach(page => {
-            console.log(`Page Name: ${page.name}, Display Name: ${page.displayName}`);
-        });
-    }
-    catch (errors) {
-        console.error("Error getting report pages:", errors);
-    }
-}
+// Beispiel: Initialisiere die Seite basierend auf der Konstante
+setInitialPage(report, Division);
