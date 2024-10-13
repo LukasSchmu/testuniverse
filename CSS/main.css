@@ -1,0 +1,377 @@
+/* Allgemeine Stile für die Webseite */
+body {
+    font-family: 'Arial';
+    background-color: #F5F5F5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Verhindert Scrollen */
+}
+
+/* Kopfbereich */
+header {
+    width: 100%;
+    background-color: #F5F5F5;
+    color: black;
+    margin-top: 0.5%;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Innerer Header, um Flexbox für zwei Teile zu ermöglichen */
+.header-inner {
+    display: flex;
+    width: 99%;
+    justify-content: space-between;
+}
+
+/* Linker Teil des Headers, für Logo */
+.header-left {
+    display: flex;
+    justify-content: center;  /* Horizontale Zentrierung */
+    align-items: center;      /* Vertikale Zentrierung */
+    min-width: 9.5%; /* Gleiche Breite wie vorher */
+}   
+
+.header-right {
+    display: flex;
+    align-items: center;
+    width: 90.5%;
+    justify-content: space-between; /* Verteile den Platz zwischen den beiden Gruppen */
+}
+
+/* Container für Titel und Untertitel */
+.header-text-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+/* Container für Buttons */
+.header-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto; /* Lässt den Platz nach den Buttons wachsen */
+}
+
+.search-container {
+    width: 250px; /* Feste Breite für die Suchleiste */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px;
+ /* Zentriert die Suchleiste */
+}
+
+input#search-bar {
+    width: 90%; /* Füllt die gesamte Breite des Containers aus */
+    border-radius: 20px;
+    height: 35px; /* Höhe des Input-Feldes */
+    padding: 0 30px; /* Mehr Platz auf der rechten Seite schaffen */
+    font-size: 14px; /* Schriftgröße */
+    border: 0px solid #D0CFCE; /* Rahmen des Input-Feldes */
+    outline: none; /* Entfernt den Standard-Fokus-Rahmen */
+    transition: border 0.35s ease; /* Übergangseffekt beim Fokussieren */
+}
+
+input#search-bar:focus {
+    border: 2px solid #000000; /* Rahmenfarbe bei Fokus */
+    color: #000000; /* Textfarbe bei Fokus */
+}
+
+input#search-bar::-webkit-input-placeholder,
+input#search-bar::-moz-placeholder,
+input#search-bar:-ms-input-placeholder {
+    transition: opacity 0.45s ease; /* Übergang für die Opazität */
+}
+
+/* Container für Profil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+/* Logo */
+.header-image {
+    width: 40px;
+    height: auto;
+}
+
+/* Titel im Header */
+.header-title {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Sub-Header */
+.header-subtitle {
+    font-size: 14px;
+    color: black;
+}
+
+/* Button im Header */
+.header-button {
+    display: flex;
+    align-items: center;
+    padding: 7px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    margin-left: 8px;
+}
+
+.header-button2 {
+    display: flex;
+    align-items: center;
+    padding: 7px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.button-icon2 {
+    margin-right: 5px; /* Adjust the space between the icon and text */
+    max-width: 20px; /* Ensure the image is appropriately sized */
+}
+
+.header-button:hover, .header-button2:hover {
+    background-color: #d8d8d8;
+    color: black
+}
+
+/* Icon im Button */
+.button-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+/* Profilbereich */
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Textinformationen im Profilbereich */
+.profile-text {
+    text-align: right;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.profile-name2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    min-width: 100px;
+    min-height: 100px;
+    cursor: pointer;
+    position: absolute; /* Positionierung anpassen, wenn nötig */
+    top: 0%; /* Vertikale Position */
+    right: 0px; /* Abstand vom rechten Rand */
+    transform: translateY(-50%); /* Zentriert vertikal */
+}
+
+/* Hauptcontainer für das Layout */
+.main-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+/* Linker Bereich mit Menü */
+.menu {
+    width: 10%;
+    max-width: 10%;
+    min-width: 10%;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    max-height: calc(100vh - 150px);
+}
+
+/* Für Webkit-Browser (Chrome, Safari) */
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Menü-Elemente */
+.menu-item {
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px 0;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 100px;
+    height: 100px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    position: relative; /* Ermöglicht absolute Positionierung des Buttons */
+}
+
+.menu-item:hover {
+    background-color: #d8d8d8;
+}
+
+.menu-item.active {
+    background-color: #d8d8d8; /* Hintergrundfarbe für aktives Element */
+    color: white; /* Schriftfarbe für aktives Element */
+}
+
+/* Icons im Menü */
+.menu-icon {
+    width: 40px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+/* Links im Menü */
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Transparent Button über Menüelementen */
+.menu-button {
+    position: absolute; /* Absolute Positionierung */
+    top: 0; /* An den oberen Rand des Menüelements */
+    left: 0; /* An den linken Rand des Menüelements */
+    right: 0; /* An den rechten Rand des Menüelements */
+    bottom: 0; /* An den unteren Rand des Menüelements */
+    background-color: transparent; /* Transparent */
+    border: none; /* Kein Rahmen */
+    cursor: pointer; /* Zeiger-Cursor, um anzuzeigen, dass es klickbar ist */
+    z-index: 1; /* Sicherstellen, dass der Button über dem Menüelement liegt */
+}
+
+button:disabled {
+    background-color: rgba(232, 232, 232, 0.7); /* Weiß mit 50% Transparenz */
+    border-radius: 15px;
+    color: rgba(102, 102, 102, 0.5); /* Dunklere Schriftfarbe mit 50% Transparenz */
+    cursor: not-allowed; /* Cursor anzeigen, um zu zeigen, dass der Button nicht klickbar ist */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Optional: Rahmen mit 30% Transparenz */
+}
+
+
+/* Container für den I-Frame */
+.iframe-container {
+    flex-grow: 1;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* I-Frame */
+iframe {
+    width: 99%;
+    height: 95%;
+    border: none;
+}
+
+.overlay {
+    position: fixed; /* Fixiert das Overlay */
+    top: 0;
+    left: 0;
+    font-size: medium;
+    width: 100%; /* Breite des Overlays */
+    height: 100%; /* Höhe des Overlays */
+    background-color: rgba(0, 0, 0, 0.7); /* Halbdurchsichtiger Hintergrund */
+    display: flex; /* Flexbox für Zentrierung */
+    justify-content: center; /* Zentriert horizontal */
+    align-items: center; /* Zentriert vertikal */
+    z-index: 1000; /* Über anderen Inhalten */
+}
+
+.popup-content {
+    background-color: white; /* Hintergrund des Popups */
+    padding: 20px 20px; /* Innenabstand oben/unten und links/rechts */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schatten für das Popup */
+    width: 400px; /* Breite des Popups */
+    height:500px;
+    text-align: center; /* Text zentrieren */
+}
+#link-field {
+    width: calc(100% - 20px); /* Breite des Eingabefelds unter Berücksichtigung des Innenabstands */
+    height: 35px; /* Höhe des Eingabefelds */
+    margin-top: 20px; /* Abstand oben */
+    padding: 0 10px; /* Innenabstand */
+    margin-bottom: 15px; /* Abstand nach unten */
+    border: 1px solid #D0CFCE; /* Rahmen des Eingabefelds */
+    outline: none; /* Entfernt den Standard-Fokus-Rahmen */
+}
+
+#copy-link {
+    width: 100%; /* Breite des Buttons */
+    height: 40px; /* Höhe des Buttons */
+    background-color: black; /* Schwarzer Hintergrund */
+    color: white; /* Weiße Schrift */
+    border: none; /* Kein Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeiger für den Cursor */
+    margin-bottom: 10px; /* Abstand zum Schließen-Button */
+}
+
+#copy-link:hover {
+    background-color: #333; /* Dunklerer Hintergrund beim Überfahren */
+}
+
+#close-popup {
+    width: 100%; /* Breite des Buttons */
+    height: 40px; /* Höhe des Buttons */
+    background-color: transparent; /* Transparenter Hintergrund */
+    color: black; /* Schwarze Schrift */
+    border: 2px solid black; /* Schwarzer Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeiger für den Cursor */
+}
+
+#close-popup:hover {
+    background-color: #f0f0f0; /* Heller Hintergrund beim Überfahren */
+}
+
+
+
+/* Icon im Button */
+.ms-icon {
+    width: 40px;
+    height: 40px;
+    margin-top:20px;
+}
+.ms-download {
+    width: 80px;
+    height: 100px;
+    margin-top:40px;
+}
