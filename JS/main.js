@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutButton.addEventListener("click", function() {
         if (isLogoutButtonVisible) {
             // Weiterleitung zur sso.html-Seite
-            window.location.href = "index.html";
+            window.location.href = "https://lukasschmu.github.io/testuniverse/";
         }
     });
 });
