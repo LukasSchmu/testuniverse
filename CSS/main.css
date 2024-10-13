@@ -57,36 +57,6 @@ header {
     margin-right: auto; /* Lässt den Platz nach den Buttons wachsen */
 }
 
-.search-container {
-    width: 250px; /* Feste Breite für die Suchleiste */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 50px;
- /* Zentriert die Suchleiste */
-}
-
-input#search-bar {
-    width: 90%; /* Füllt die gesamte Breite des Containers aus */
-    border-radius: 20px;
-    height: 35px; /* Höhe des Input-Feldes */
-    padding: 0 30px; /* Mehr Platz auf der rechten Seite schaffen */
-    font-size: 14px; /* Schriftgröße */
-    border: 0px solid #D0CFCE; /* Rahmen des Input-Feldes */
-    outline: none; /* Entfernt den Standard-Fokus-Rahmen */
-    transition: border 0.35s ease; /* Übergangseffekt beim Fokussieren */
-}
-
-input#search-bar:focus {
-    border: 2px solid #000000; /* Rahmenfarbe bei Fokus */
-    color: #000000; /* Textfarbe bei Fokus */
-}
-
-input#search-bar::-webkit-input-placeholder,
-input#search-bar::-moz-placeholder,
-input#search-bar:-ms-input-placeholder {
-    transition: opacity 0.45s ease; /* Übergang für die Opazität */
-}
 
 /* Container für Profil */
 .profile-container {
