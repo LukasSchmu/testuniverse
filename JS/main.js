@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userRole = "HQ"; // Ändere zu "HQ" oder lade die Rolle dynamisch
-
-    // Konfiguration des Menüs basierend auf der Rolle
-    const roleConfig = {
-        HQ: ["overview-link", "test-level-link", "fitverse-link", "wear-link", "performance-link", "lab-link", "biomechanical-link"],
-        OC: ["wear-link", "performance-link", "lab-link"]
-    };
-
     // ===== Menü- und iFrame-Management =====
     
     const iframe = document.querySelector('.iframe-container iframe');
@@ -83,53 +75,34 @@ document.addEventListener("DOMContentLoaded", function () {
         transparentButton.style.transform = `translateX(-${logoutButtonWidth}px)`;
     });
 
-    // ===== Menükonfiguration basierend auf der Rolle =====
-
-    function configureMenuForRole(role) {
-        document.querySelectorAll('.menu-item').forEach(item => item.style.display = 'none');
-
-        if (roleConfig[role]) {
-            roleConfig[role].forEach(linkId => {
-                const menuItem = document.getElementById(linkId).closest('.menu-item');
-                if (menuItem) {
-                    menuItem.style.display = 'flex';
-                }
-            });
-        }
-    }
-
-    // Menü basierend auf der Rolle initialisieren
-    configureMenuForRole(userRole);
-
     // ===== Logout-Button klickbar, wenn sichtbar =====
     
     logoutButton.addEventListener("click", function() {
         if (isLogoutButtonVisible) {
             // Weiterleitung zur sso.html-Seite
-            window.location.href = "sso.html";
+            window.location.href = "index.html";
         }
     });
 });
 
-        // Funktion zum Aktualisieren der Icons im Toggle
-        function updateToggleIcon() {
-            const toggleSwitch = document.getElementById('toggleSwitch');
-            const toggleIconLeft = document.getElementById('toggleIconLeft');
-            const toggleIconLeftActive = document.getElementById('toggleIconLeftActive');
-            const toggleIconRight = document.getElementById('toggleIconRight');
-            const toggleIconRightActive = document.getElementById('toggleIconRightActive');
+// Funktion zum Aktualisieren der Icons im Toggle
+function updateToggleIcon() {
+    const toggleSwitch = document.getElementById('toggleSwitch');
+    const toggleIconLeft = document.getElementById('toggleIconLeft');
+    const toggleIconLeftActive = document.getElementById('toggleIconLeftActive');
+    const toggleIconRight = document.getElementById('toggleIconRight');
+    const toggleIconRightActive = document.getElementById('toggleIconRightActive');
 
-            // Wechseln der Sichtbarkeit der Icons
-            if (toggleSwitch.checked) {
-                toggleIconLeft.classList.add('hidden');
-                toggleIconLeftActive.classList.remove('hidden');
-                toggleIconRight.classList.add('hidden');
-                toggleIconRightActive.classList.remove('hidden');
-            } else {
-                toggleIconLeft.classList.remove('hidden');
-                toggleIconLeftActive.classList.add('hidden');
-                toggleIconRight.classList.remove('hidden');
-                toggleIconRightActive.classList.add('hidden');
-            }
-        }
-
+    // Wechseln der Sichtbarkeit der Icons
+    if (toggleSwitch.checked) {
+        toggleIconLeft.classList.add('hidden');
+        toggleIconLeftActive.classList.remove('hidden');
+        toggleIconRight.classList.add('hidden');
+        toggleIconRightActive.classList.remove('hidden');
+    } else {
+        toggleIconLeft.classList.remove('hidden');
+        toggleIconLeftActive.classList.add('hidden');
+        toggleIconRight.classList.remove('hidden');
+        toggleIconRightActive.classList.add('hidden');
+    }
+}
