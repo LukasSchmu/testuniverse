@@ -105,7 +105,7 @@ input#search-bar:-ms-input-placeholder {
 
 /* Titel im Header */
 .header-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 1;
 }
@@ -128,25 +128,9 @@ input#search-bar:-ms-input-placeholder {
     cursor: pointer;
     font-size: 11px;
     margin-left: 8px;
+    margin-right: 40px;
 }
 
-.header-button2 {
-    display: flex;
-    align-items: center;
-    padding: 7px 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    margin-left: 2px;
-}
-
-.button-icon2 {
-    margin-right: 5px; /* Adjust the space between the icon and text */
-    max-width: 20px; /* Ensure the image is appropriately sized */
-}
 
 .header-button:hover, .header-button2:hover {
     background-color: #d8d8d8;
@@ -173,12 +157,12 @@ input#search-bar:-ms-input-placeholder {
 }
 
 .profile-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bolder;
 }
 
 .profile-name2 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -375,3 +359,69 @@ iframe {
     height: 100px;
     margin-top:40px;
 }
+
+/* Toggle Switch CSS */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Breite des Toggles */
+    height: 25px; /* Höhe des Toggles */
+    margin: 0 10px; /* Abstand um den Toggle */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 25px; /* Runder Stil */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; /* Höhe des Schiebereglers */
+    width: 20px; /* Breite des Schiebereglers */
+    left: 2px; /* Abstand vom linken Rand */
+    bottom: 2px; /* Abstand vom unteren Rand */
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: black; /* Farbe, wenn der Toggle aktiviert ist */
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px); /* Bewegung des Schiebereglers */
+}
+
+/* Container für den Toggle und die Icons */
+.toggle-container {
+    display: flex;
+    align-items: center; /* Vertikale Ausrichtung */
+}
+
+/* Stil für die Icons im Toggle */
+.toggle-icon {
+    width: 30px; /* Neue Breite der Icons */
+    height: 30px; /* Neue Höhe der Icons */
+    margin: 0 5px; /* Abstand zwischen Icons und Toggle */
+}
+
+.hidden {
+    display: none;
+}
+
+

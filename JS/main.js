@@ -106,8 +106,30 @@ document.addEventListener("DOMContentLoaded", function () {
     logoutButton.addEventListener("click", function() {
         if (isLogoutButtonVisible) {
             // Weiterleitung zur sso.html-Seite
-            window.location.href = "/testuniverse";
+            window.location.href = "sso.html";
         }
     });
 });
+
+        // Funktion zum Aktualisieren der Icons im Toggle
+        function updateToggleIcon() {
+            const toggleSwitch = document.getElementById('toggleSwitch');
+            const toggleIconLeft = document.getElementById('toggleIconLeft');
+            const toggleIconLeftActive = document.getElementById('toggleIconLeftActive');
+            const toggleIconRight = document.getElementById('toggleIconRight');
+            const toggleIconRightActive = document.getElementById('toggleIconRightActive');
+
+            // Wechseln der Sichtbarkeit der Icons
+            if (toggleSwitch.checked) {
+                toggleIconLeft.classList.add('hidden');
+                toggleIconLeftActive.classList.remove('hidden');
+                toggleIconRight.classList.add('hidden');
+                toggleIconRightActive.classList.remove('hidden');
+            } else {
+                toggleIconLeft.classList.remove('hidden');
+                toggleIconLeftActive.classList.add('hidden');
+                toggleIconRight.classList.remove('hidden');
+                toggleIconRightActive.classList.add('hidden');
+            }
+        }
 

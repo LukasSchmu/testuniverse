@@ -13,130 +13,144 @@
 </head>
 <body>
 
-<header>
-    <div class="header-inner">
-        <!-- Linker Teil: Logo -->
-        <div class="header-left">
-            <img class="header-image" src="../Media/Logo.svg" alt="Logo">
-        </div>
-
-        <!-- Rechter Teil: Überschrift, Buttons, Suche, Profil -->
-        <div class="header-right">
-            <!-- Container für Überschrift und Untertitel -->
-            <div class="header-text-container">
-                <div class="header-title">TEST UNIVERS</div>
-                <div class="header-subtitle">ANALYTICS</div>
+    <header>
+        <div class="header-inner">
+            <!-- Linker Teil: Logo -->
+            <div class="header-left">
+                <img class="header-image" src="../Media/Logo.svg" alt="Logo">
             </div>
-
-            <!-- Container für Buttons -->
-            <div class="header-buttons-container">
-                <button id="MS-button" class="header-button">
-                    <img src="../Media/Zauberstab.png" alt="Icon" class="button-icon">
-                    MAGIC SLIDE
-                </button>
-            </div>
-
-            <!-- Container für Suchleiste -->
-            <form class="search-container">
-                <div class="input-container">
-                    <input type="text" id="search-bar" placeholder="Search ...">
+    
+            <!-- Rechter Teil: Überschrift, Buttons, Suche, Profil -->
+            <div class="header-right">
+                <!-- Container für Überschrift und Untertitel -->
+                <div class="header-text-container">
+                    <div class="header-title">TEST UNIVERS</div>
+                    <div class="header-subtitle">ANALYTICS</div>
                 </div>
-            </form>
-
-            <div class="profile-container">
-                <div class="profile-text">
-                    <div class="profile-name">LUKAS</div>
-                    <div class="profile-name2">SCHMUCK</div>
+    
+                <!-- Container für Buttons -->
+                <div class="header-buttons-container">
+                    <button id="MS-button" class="header-button">
+                        <img src="../Media/Zauberstab.png" alt="Icon" class="button-icon">
+                        MAGIC SLIDE
+                    </button>
+    
+                    <!-- Container für den Toggle mit Icons -->
+                    <div class="toggle-container">
+                        <!-- Links: FTW Icons -->
+                        <img src="../Media/Footwear.png" alt="FTW Icon" class="toggle-icon" id="toggleIconLeft">
+                        <img src="../Media/Footwear_disabled.png" alt="FTW Icon" class="toggle-icon hidden" id="toggleIconLeftActive">
+    
+                        <!-- Toggle Switch -->
+                        <label class="switch">
+                            <input type="checkbox" id="toggleSwitch" onchange="updateToggleIcon()">
+                            <span class="slider round"></span>
+                        </label>
+    
+                        <!-- Rechts: APP Icons -->
+                        <img src="../Media/Apparel.svg.png" alt="APP Icon" class="toggle-icon hidden" id="toggleIconRightActive">
+                        <img src="../Media/Apparel_disabled.svg.png" alt="APP Icon" class="toggle-icon" id="toggleIconRight">
+                    </div>
                 </div>
-                <img src="../Media/Lukas.jpg" alt="Profilbild" class="profile-image" id="profile-pic">
-                <!-- Transparenter Button für das Profil-Overlay -->
-                <button class="transparent-button" id="open-profile-popup"></button>
-            
-                <!-- Schwarzer Logout-Button, der standardmäßig verborgen ist -->
-                <button id="logout-button" style="display: none; background-color: black; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Logout</button>
+    
+                <!-- Container für Suchleiste -->
+                <form class="search-container">
+                    <div class="input-container">
+                        <input type="text" id="search-bar" placeholder="Search ...">
+                    </div>
+                </form>
+    
+                <div class="profile-container">
+                    <div class="profile-text">
+                        <div class="profile-name">LUKAS</div>
+                        <div class="profile-name2">SCHMUCK</div>
+                    </div>
+                    <img src="../Media/Lukas.jpg" alt="Profilbild" class="profile-image" id="profile-pic">
+                    <!-- Transparenter Button für das Profil-Overlay -->
+                    <button class="transparent-button" id="open-profile-popup"></button>
+    
+                    <!-- Schwarzer Logout-Button, der standardmäßig verborgen ist -->
+                    <button id="logout-button" style="display: none; background-color: black; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Logout</button>
+                </div>
             </div>
         </div>
-    </div>
+    
+        <!-- Overlay für das Pop-up -->
+        <div id="overlay" class="overlay" style="display: none;">
+            <div class="popup-content">
+                <img src="../Media/Zauberstab_black.svg" alt="Icon" class="ms-icon">
+                <h2>MAGIC SLIDES</h2>
+                <p>Use the following individual link to connect your Power BI reports.</p>
 
-    <!-- Overlay für das Pop-up -->
-    <div id="overlay" class="overlay" style="display: none;">
-        <div class="popup-content">
-            <img src="../Media/Zauberstab_black.svg" alt="Icon" class="ms-icon">
-            <h2>MAGIC SLIDES</h2>
-            <p>Use the following individual link to connect your PowerPoint with the test universe.</p>
+                <!-- Eingabefeld für den Link -->
+                <input type="text" id="link-field" value="" readonly>
+                <button id="copy-link">Copy</button>
 
-            <!-- Eingabefeld für den Link -->
-            <input type="text" id="link-field" value="" readonly>
-            <button id="copy-link">Copy</button>
+                <button id="close-popup">Close</button>
+                <a href="https://adidasgroup.sharepoint.com/sites/AC-TProductExcellence/_layouts/15/download.aspx?UniqueId=cd05a1ba%2Dc2eb%2D4e98%2D8e29%2Dee244dd9486a" target="_blank">
+                    <img src="../Media/MS_Download_Template.svg" alt="Icon" class="ms-download">
+                </a>
+            </div>
+        </div>
+    </header>
 
-            <button id="close-popup">Close</button>
-            <a href="https://adidasgroup.sharepoint.com/sites/AC-TProductExcellence/_layouts/15/download.aspx?UniqueId=cd05a1ba%2Dc2eb%2D4e98%2D8e29%2Dee244dd9486a" target="_blank">
-                <img src="../Media/MS_Download_Template.svg" alt="Icon" class="ms-download">
-            </a>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/powerbi-client@2.19.0/dist/powerbi.js"></script>
-</header>
+    <main class="main-container">
+        <!-- Linker Bereich mit Menü -->
+        <nav class="menu" role="navigation">
+            <div class="menu-item">
+                <img src="../Media/Overview.svg" alt="Overview Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="overview-link">Overview</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=overviewId"></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Test Level.svg" alt="Test Level Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="test-level-link">Test Level</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=6b657013-5a87-435b-8f90-66f483214cb6&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Fit-Test.svg" alt="Fit Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="fitverse-link">Fitverse</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&embeddedDemo=true"></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Wear-Test.png" alt="Wear Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="wear-link">Wear</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=wearId" disabled></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Performance-Test.svg" alt="Performance Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="performance-link">Performance</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=performanceId" disabled></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Lab-Test.svg" alt="Lab Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="lab-link">Lab</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=labId" disabled></button>
+            </div>
+            <div class="menu-item">
+                <img src="../Media/Biomechanic.png" alt="Biomechanical Icon" class="menu-icon">
+                <a href="#" class="menu-link" id="biomechanical-link">Biomechanical</a>
+                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=biomechanicalId" disabled></button>
+            </div>
+        </nav>
 
-<main class="main-container">
-    <!-- Linker Bereich mit Menü -->
-    <nav class="menu" role="navigation">
-        <div class="menu-item">
-            <img src="../Media/Overview.svg" alt="Overview Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="overview-link">Overview</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=overviewId"></button>
+        <!-- I-Frame für Analytics -->
+        <div class="iframe-container">
+            <iframe
+                id="powerbi-iframe"
+                title="TST_Fitverse Analytics v1.3"
+                width="1140"
+                height="541.25"
+                src="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"
+                frameborder="0"
+                allowFullScreen="true">
+            </iframe>
         </div>
-        <div class="menu-item">
-            <img src="../Media/Test Level.svg" alt="Test Level Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="test-level-link">Test Level</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=6b657013-5a87-435b-8f90-66f483214cb6&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"></button>
-        </div>
-        <div class="menu-item">
-            <img src="../Media/Fit-Test.svg" alt="Fit Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="fitverse-link">Fitverse</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&embeddedDemo=true">
-            </button>
-            
-        </div>
-        <div class="menu-item">
-            <img src="../Media/Wear-Test.png" alt="Wear Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="wear-link">Wear</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=wearId" disabled></button>
-        </div>
-        <div class="menu-item">
-            <img src="../Media/Performance-Test.svg" alt="Performance Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="performance-link">Performance</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=performanceId" disabled></button>
-        </div>
-        <div class="menu-item">
-            <img src="../Media/Lab-Test.svg" alt="Lab Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="lab-link">Lab</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=labId" disabled></button>
-        </div>
-        <div class="menu-item">
-            <img src="../Media/Biomechanic.png" alt="Biomechanical Icon" class="menu-icon">
-            <a href="#" class="menu-link" id="biomechanical-link">Biomechanical</a>
-            <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=biomechanicalId" disabled></button>
-        </div>
-    </nav>
+    </main>
 
-    <!-- I-Frame für Analytics -->
-    <div class="iframe-container">
-        <iframe
-            id="powerbi-iframe"
-            title="TST_Fitverse Analytics v1.3"
-            width="1140"
-            height="541.25"
-            src="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"
-            frameborder="0"
-            allowFullScreen="true">
-        </iframe>
-    </div>
-</main>
-
-<!-- JavaScript-Datei einbinden -->
-<script src="../JS/main.js"></script>
-<script src="../JS/Fitverse.js"></script>
-
+    <!-- JavaScript-Datei einbinden -->
+    <script src="../JS/main.js"></script>
+    <script src="../JS/Fitverse.js"></script>
+    
 </body>
 </html>
