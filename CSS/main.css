@@ -201,7 +201,7 @@ header {
 
 /* Icons im Menü */
 .menu-icon {
-    width: 3vw; /* Breite des Icons */
+    width: 2vw; /* Breite des Icons */
     height: auto; /* Höhe automatisch, um das Seitenverhältnis beizubehalten */
     
 }
