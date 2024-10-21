@@ -69,20 +69,20 @@ header {
 
 /* Logo */
 .header-image {
-    width: 40px;
+    width: 2vw;
     height: auto;
 }
 
 /* Titel im Header */
 .header-title {
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: bold;
     line-height: 1;
 }
 
 /* Sub-Header */
 .header-subtitle {
-    font-size: 14px;
+    font-size: 0.8vw;
     color: black;
 }
 
@@ -90,13 +90,13 @@ header {
 .header-button {
     display: flex;
     align-items: center;
-    padding: 7px 15px;
+    padding: 1vh 1.5vw;
     background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 0.6vw;
     margin-left: 8px;
     margin-right: 40px;
 }
@@ -109,15 +109,15 @@ header {
 
 /* Icon im Button */
 .button-icon {
-    width: 20px;
-    height: 20px;
+    width: 1vw;
+    height: 1vw;
     margin-right: 8px;
 }
 
 /* Profilbereich */
 .profile-image {
-    width: 50px;
-    height: 50px;
+    width: 3vw;
+    height: 3vw;
     border-radius: 50%;
 }
 
@@ -127,20 +127,20 @@ header {
 }
 
 .profile-name {
-    font-size: 14px;
+    font-size: 0.8vw;
     font-weight: bolder;
 }
 
 .profile-name2 {
-    font-size: 14px;
+    font-size: 0.8vw;
     font-weight: normal;
 }
 
 .transparent-button {
     background-color: transparent;
     border: none;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 5vw;
+    min-height: 5vw;
     cursor: pointer;
     position: absolute; /* Positionierung anpassen, wenn nötig */
     top: 0%; /* Vertikale Position */
@@ -157,15 +157,13 @@ header {
 
 /* Linker Bereich mit Menü */
 .menu {
-    width: 10%;
-    max-width: 10%;
-    min-width: 10%;
+    width: 10vw; /* 10% der Breite des Viewports */
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
-    max-height: calc(100vh - 150px);
+    max-height: calc(100vh - 9vh); /* Höhe, die von der Kopfzeile abgezogen wird */
 }
 
 /* Für Webkit-Browser (Chrome, Safari) */
@@ -176,13 +174,13 @@ header {
 /* Menü-Elemente */
 .menu-item {
     background-color: white;
-    border-radius: 15px;
-    margin: 10px 0;
+    border-radius: 0.7vw; /* 24px (schätzung) */
+    margin: 0.5vh 0; /* 8px (schätzung) */
     text-align: center;
     transition: background-color 0.3s;
-    width: 100px;
-    height: 100px;
-    min-height: 100px;
+    width: 6vw; /* Breite des Menü-Elements */
+    height: 6vw; /* Höhe des Menü-Elements */
+    min-height: 6vw; /* Mindesthöhe des Menü-Elements */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -200,20 +198,21 @@ header {
     color: white; /* Schriftfarbe für aktives Element */
 }
 
+
 /* Icons im Menü */
 .menu-icon {
-    width: 40px;
-    height: auto;
-    margin-bottom: 5px;
+    width: 3vw; /* Breite des Icons */
+    height: auto; /* Höhe automatisch, um das Seitenverhältnis beizubehalten */
+    
 }
 
 /* Links im Menü */
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 11px;
+    font-size: 0.7vw; /* Schriftgröße für Links */
     display: block;
-    margin-top: 5px;
+    margin-top: 0.5vh; /* Abstand über den Links */
 }
 
 /* Transparent Button über Menüelementen */
@@ -231,7 +230,7 @@ header {
 
 button:disabled {
     background-color: rgba(232, 232, 232, 0.7); /* Weiß mit 50% Transparenz */
-    border-radius: 15px;
+    border-radius: 0.5vw; /* Dynamische Rundung in % */
     color: rgba(102, 102, 102, 0.5); /* Dunklere Schriftfarbe mit 50% Transparenz */
     cursor: not-allowed; /* Cursor anzeigen, um zu zeigen, dass der Button nicht klickbar ist */
     border: 1px solid rgba(255, 255, 255, 0.3); /* Optional: Rahmen mit 30% Transparenz */
@@ -241,18 +240,23 @@ button:disabled {
 /* Container für den I-Frame */
 .iframe-container {
     flex-grow: 1;
-    padding: 0px;
+    padding: 0;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: hidden; /* Verhindert Überlauf */
+    background-color: #fff; /* Hintergrundfarbe */
 }
 
 /* I-Frame */
 iframe {
-    width: 99%;
-    height: 95%;
+    width: 100%; /* Nutze die volle Breite des Containers */
+    height: calc(100vh - 5rem); /* Beispiel für 5rem für Header oder andere Elemente */
+    max-height: 100%; /* Stelle sicher, dass der I-Frame nicht über die Containerhöhe hinausgeht */
     border: none;
+    border-radius: rem; /* Runde Ecken für modernes Design */
 }
+
 
 .overlay {
     position: fixed; /* Fixiert das Overlay */
@@ -270,32 +274,33 @@ iframe {
 
 .popup-content {
     background-color: white; /* Hintergrund des Popups */
-    padding: 20px 20px; /* Innenabstand oben/unten und links/rechts */
-    border-radius: 8px; /* Abgerundete Ecken */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schatten für das Popup */
-    width: 400px; /* Breite des Popups */
-    height:500px;
+    padding: 1.25rem 1.25rem; /* Innenabstand oben/unten und links/rechts */
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2); /* Schatten für das Popup */
+    width: 25rem; /* 400px */
+    height: 31.25rem; /* 500px */
     text-align: center; /* Text zentrieren */
 }
+
 #link-field {
-    width: calc(100% - 20px); /* Breite des Eingabefelds unter Berücksichtigung des Innenabstands */
-    height: 35px; /* Höhe des Eingabefelds */
-    margin-top: 20px; /* Abstand oben */
-    padding: 0 10px; /* Innenabstand */
-    margin-bottom: 15px; /* Abstand nach unten */
+    width: calc(100% - 1.25rem); /* Breite des Eingabefelds unter Berücksichtigung des Innenabstands */
+    height: 2.1875rem; /* 35px */
+    margin-top: 1.25rem; /* Abstand oben */
+    padding: 0 0.625rem; /* Innenabstand */
+    margin-bottom: 0.9375rem; /* Abstand nach unten */
     border: 1px solid #D0CFCE; /* Rahmen des Eingabefelds */
     outline: none; /* Entfernt den Standard-Fokus-Rahmen */
 }
 
 #copy-link {
     width: 100%; /* Breite des Buttons */
-    height: 40px; /* Höhe des Buttons */
+    height: 2.5rem; /* 40px */
     background-color: black; /* Schwarzer Hintergrund */
     color: white; /* Weiße Schrift */
     border: none; /* Kein Rahmen */
-    border-radius: 5px; /* Abgerundete Ecken */
+    border-radius: 0.3125rem; /* 5px */
     cursor: pointer; /* Zeiger für den Cursor */
-    margin-bottom: 10px; /* Abstand zum Schließen-Button */
+    margin-bottom: 0.625rem; /* Abstand zum Schließen-Button */
 }
 
 #copy-link:hover {
@@ -304,11 +309,11 @@ iframe {
 
 #close-popup {
     width: 100%; /* Breite des Buttons */
-    height: 40px; /* Höhe des Buttons */
+    height: 2.5rem; /* 40px */
     background-color: transparent; /* Transparenter Hintergrund */
     color: black; /* Schwarze Schrift */
-    border: 2px solid black; /* Schwarzer Rahmen */
-    border-radius: 5px; /* Abgerundete Ecken */
+    border: 0.125rem solid black; /* Schwarzer Rahmen */
+    border-radius: 0.3125rem; /* 5px */
     cursor: pointer; /* Zeiger für den Cursor */
 }
 
@@ -316,27 +321,26 @@ iframe {
     background-color: #f0f0f0; /* Heller Hintergrund beim Überfahren */
 }
 
-
-
 /* Icon im Button */
 .ms-icon {
-    width: 40px;
-    height: 40px;
-    margin-top:20px;
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+    margin-top: 1.25rem; /* 20px */
 }
+
 .ms-download {
-    width: 80px;
-    height: 100px;
-    margin-top:40px;
+    width: 5rem; /* 80px */
+    height: 6.25rem; /* 100px */
+    margin-top: 2.5rem; /* 40px */
 }
 
 /* Toggle Switch CSS */
 .switch {
     position: relative;
     display: inline-block;
-    width: 50px; /* Breite des Toggles */
-    height: 25px; /* Höhe des Toggles */
-    margin: 0 10px; /* Abstand um den Toggle */
+    width: 3vw; /* 50px umgerechnet und verkleinert */
+    height: 1.5vw; /* 25px umgerechnet und verkleinert */
+    margin: 0 0.4vw; /* 10px umgerechnet und verkleinert */
 }
 
 .switch input {
@@ -354,16 +358,16 @@ iframe {
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
-    border-radius: 25px; /* Runder Stil */
+    border-radius: 1.5vw; /* 25px umgerechnet und verkleinert */
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 20px; /* Höhe des Schiebereglers */
-    width: 20px; /* Breite des Schiebereglers */
-    left: 2px; /* Abstand vom linken Rand */
-    bottom: 2px; /* Abstand vom unteren Rand */
+    height: 1.25vw; /* 20px umgerechnet und verkleinert */
+    width: 1.25vw; /* 20px umgerechnet und verkleinert */
+    left: 0.15vw; /* 2px umgerechnet und verkleinert */
+    bottom: 0.15vw; /* 2px umgerechnet und verkleinert */
     background-color: white;
     transition: .4s;
     border-radius: 50%;
@@ -374,7 +378,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(25px); /* Bewegung des Schiebereglers */
+    transform: translateX(1.5vw); /* Bewegung des Schiebereglers (25px umgerechnet und verkleinert) */
 }
 
 /* Container für den Toggle und die Icons */
@@ -385,13 +389,12 @@ input:checked + .slider:before {
 
 /* Stil für die Icons im Toggle */
 .toggle-icon {
-    width: 30px; /* Neue Breite der Icons */
-    height: 30px; /* Neue Höhe der Icons */
-    margin: 0 5px; /* Abstand zwischen Icons und Toggle */
+    width: 2.5vw; /* 30px umgerechnet und verkleinert */
+    height: 2.5vw; /* 30px umgerechnet und verkleinert */
+    margin: 0 0.4vw; /* 5px umgerechnet und verkleinert */
 }
 
 .hidden {
     display: none;
 }
-
 
