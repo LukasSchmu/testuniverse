@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Konfiguration des Menüs basierend auf der Rolle
     const roleConfig = {
-        HQ: ["overview-link", "test-level-link", "fitverse-link", "wear-link", "performance-link", "lab-link", "biomechanical-link"],
+        HQ: ["overview-link", "adi-link", "test-level-link", "fitverse-link", "wear-link", "performance-link", "lab-link", "biomechanical-link"],
         OC: ["fitverse-link", "performance-link", "lab-link"]
     };
 
