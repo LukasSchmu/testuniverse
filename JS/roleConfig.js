@@ -1,27 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userRole = "HQ"; // Ändere zu "HQ" oder lade die Rolle dynamisch
+    const userRole = "HQ"; // Change to "HQ" or load the role dynamically
 
-    // Konfiguration des Menüs basierend auf der Rolle
+    // Configuration of menu based on role
     const roleConfig = {
         HQ: ["overview-link", "adi-link", "test-level-link", "fitverse-link", "wear-link", "performance-link", "lab-link", "biomechanical-link"],
         OC: ["fitverse-link", "performance-link", "lab-link"]
     };
 
-    // ===== Menükonfiguration basierend auf der Rolle =====
-
+    // ===== Menu configuration based on role =====
     function configureMenuForRole(role) {
+        // Hide all menu items initially
         document.querySelectorAll('.menu-item').forEach(item => item.style.display = 'none');
 
         if (roleConfig[role]) {
             roleConfig[role].forEach(linkId => {
-                const menuItem = document.getElementById(linkId).closest('.menu-item');
+                const menuItem = document.getElementById(linkId)?.closest('.menu-item');
                 if (menuItem) {
-                    menuItem.style.display = 'flex';
+                    menuItem.style.display = 'flex'; // Make the item visible
                 }
             });
         }
     }
 
-    // Menü basierend auf der Rolle initialisieren
+    // Initialize the menu based on the role
     configureMenuForRole(userRole);
 });
