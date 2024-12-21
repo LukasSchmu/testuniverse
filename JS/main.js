@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     // ===== Menü- und iFrame-Management =====
     
-    const iframe = document.querySelector('.iframe-container iframe');;
+    const iframe = document.querySelector('.iframe-container iframe');
     const menuButtons = document.querySelectorAll('.menu-button');
 
-       function changeIframeSource(url, linkId) {
-        
-        // Setze die URL des iframes
+    function changeIframeSource(url, linkId) {
         iframe.src = url;
         activateMenuLink(linkId);
     }
-
 
     function activateMenuLink(linkId) {
         document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
