@@ -1,14 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     // ===== Menü- und iFrame-Management =====
     
-    const iframe = document.querySelector('.iframe-container iframe');
-  const placeholderImage = document.getElementById('placeholder-image');
+    const iframe = document.querySelector('.iframe-container iframe');;
     const menuButtons = document.querySelectorAll('.menu-button');
 
        function changeIframeSource(url, linkId) {
-        // Verstecke das Platzhalterbild und zeige das iframe
-        placeholderImage.style.display = 'none';
-        iframe.style.display = 'block';
         
         // Setze die URL des iframes
         iframe.src = url;
