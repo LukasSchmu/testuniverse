@@ -121,6 +121,10 @@ header {
     border-radius: 50%;
 }
 
+.refesh-icon {
+    width: 1.5vw;
+    height: 1.5vw;}
+
 /* Textinformationen im Profilbereich */
 .profile-text {
     text-align: right;
