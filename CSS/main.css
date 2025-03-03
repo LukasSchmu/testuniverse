@@ -243,23 +243,20 @@ button:disabled {
 
 /* Container für den I-Frame */
 .iframe-container {
-    flex-grow: 1;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     background-color: #fff;
     position: relative;
-    width: 100%;
-    max-width: 100%;
+    height: 100%; /* Höhe bleibt fix */
 }
 
 .iframe-container iframe {
-    width: 100%;
+    height: 100%;
+    width: auto; /* Breite wird basierend auf 16:9 berechnet */
     aspect-ratio: 16 / 9;
     border: none;
-    border-radius: 10px; /* Hier eine feste Rundung setzen */
 }
 
 
