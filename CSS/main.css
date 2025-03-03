@@ -109,8 +109,8 @@ header {
 
 /* Icon im Button */
 .button-icon {
-    width: 0.8vw;
-    height: 0.8vw;
+    width: 1vw;
+    height: 1vw;
     margin-right: 8px;
 }
 
@@ -161,7 +161,7 @@ header {
 
 /* Linker Bereich mit Menü */
 .menu {
-    width: 10vw; /* 10% der Breite des Viewports */
+    width: 8vw; /* 10% der Breite des Viewports */
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
@@ -205,7 +205,7 @@ header {
 
 /* Icons im Menü */
 .menu-icon {
-    width: 1.5vw; /* Breite des Icons */
+    width: 1.2vw; /* Breite des Icons */
     height: auto; /* Höhe automatisch, um das Seitenverhältnis beizubehalten */
     
 }
@@ -214,7 +214,7 @@ header {
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 0.7vw; /* Schriftgröße für Links */
+    font-size: 0.4vw; /* Schriftgröße für Links */
     display: block;
     margin-top: 0.5vh; /* Abstand über den Links */
 }
