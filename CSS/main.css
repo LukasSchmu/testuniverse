@@ -214,7 +214,7 @@ header {
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 0.5vw; /* Schriftgröße für Links */
+    font-size: 0.6vw; /* Schriftgröße für Links */
     display: block;
     margin-top: 0.5vh; /* Abstand über den Links */
 }
