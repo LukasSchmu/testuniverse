@@ -109,8 +109,8 @@ header {
 
 /* Icon im Button */
 .button-icon {
-    width: 1vw;
-    height: 1vw;
+    width: 0.8vw;
+    height: 0.8vw;
     margin-right: 8px;
 }
 
@@ -205,7 +205,7 @@ header {
 
 /* Icons im Menü */
 .menu-icon {
-    width: 2vw; /* Breite des Icons */
+    width: 1.5vw; /* Breite des Icons */
     height: auto; /* Höhe automatisch, um das Seitenverhältnis beizubehalten */
     
 }
