@@ -182,9 +182,9 @@ header {
     margin: 0.5vh 0; /* 8px (schätzung) */
     text-align: center;
     transition: background-color 0.3s;
-    width: 6vw; /* Breite des Menü-Elements */
-    height: 6vw; /* Höhe des Menü-Elements */
-    min-height: 6vw; /* Mindesthöhe des Menü-Elements */
+    width: 5vw; /* Breite des Menü-Elements */
+    height: 5vw; /* Höhe des Menü-Elements */
+    min-height: 5vw; /* Mindesthöhe des Menü-Elements */
     display: flex;
     flex-direction: column;
     justify-content: center;
