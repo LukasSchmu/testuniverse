@@ -161,7 +161,7 @@ header {
 
 /* Linker Bereich mit Menü */
 .menu {
-    width: 8vw; /* 10% der Breite des Viewports */
+    width: 9vw; /* 10% der Breite des Viewports */
     background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
@@ -182,9 +182,9 @@ header {
     margin: 0.5vh 0; /* 8px (schätzung) */
     text-align: center;
     transition: background-color 0.3s;
-    width: 5vw; /* Breite des Menü-Elements */
-    height: 5vw; /* Höhe des Menü-Elements */
-    min-height: 5vw; /* Mindesthöhe des Menü-Elements */
+    width: 6vw; /* Breite des Menü-Elements */
+    height: 6vw; /* Höhe des Menü-Elements */
+    min-height: 6vw; /* Mindesthöhe des Menü-Elements */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,7 +205,7 @@ header {
 
 /* Icons im Menü */
 .menu-icon {
-    width: 1.6vw; /* Breite des Icons */
+    width: 1.8vw; /* Breite des Icons */
     height: auto; /* Höhe automatisch, um das Seitenverhältnis beizubehalten */
     
 }
@@ -214,7 +214,7 @@ header {
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 0.6vw; /* Schriftgröße für Links */
+    font-size: 0.7vw; /* Schriftgröße für Links */
     display: block;
     margin-top: 0.5vh; /* Abstand über den Links */
 }
@@ -255,7 +255,7 @@ button:disabled {
 .iframe-container iframe {
     height: 100%;
     width: auto; /* Breite wird basierend auf 16:9 berechnet */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     border: none;
 }
 
