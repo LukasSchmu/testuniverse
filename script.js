@@ -1,3 +1,7 @@
+<script src="https://alcdn.msauth.net/browser/2.34.0/js/msal-browser.min.js"></script>
+<script src="script.js"></script>
+
+<script>
 console.log("Script.js geladen!"); // Prüfen, ob das Skript läuft
 
 const msalConfig = {
@@ -8,19 +12,22 @@ const msalConfig = {
     }
 };
 
+// MSAL-Instanz erstellen
 const msalInstance = new msal.PublicClientApplication(msalConfig);
 
-// Stelle sicher, dass MSAL bereit ist
-msalInstance.initialize().then(() => {
-    console.log("MSAL ist bereit.");
+window.onload = function() {
+    console.log("Seite geladen!");
+
     const loginButton = document.getElementById("sso-login-button");
 
     if (loginButton) {
         loginButton.addEventListener("click", function() {
             console.log("Login-Button wurde geklickt!");
-            msalInstance.loginRedirect({ scopes: ["User.Read"] });
+            msalInstance.loginRedirect({ scopes: ["User.Read"] })
+                .catch(error => console.error("Login-Fehler:", error));
         });
     } else {
-        console.log("FEHLER: Button nicht gefunden!");
+        console.error("FEHLER: Login-Button mit ID 'sso-login-button' wurde nicht gefunden!");
     }
-});
+};
+</script>
