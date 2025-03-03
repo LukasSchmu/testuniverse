@@ -39,13 +39,13 @@ header {
     display: flex;
     justify-content: center;  /* Horizontale Zentrierung */
     align-items: center;      /* Vertikale Zentrierung */
-    min-width: 5%; /* Gleiche Breite wie vorher */
+    min-width: 7.1%; /* Gleiche Breite wie vorher */
 }   
 
 .header-right {
     display: flex;
     align-items: center;
-    width: 94.5%;
+    width: 91.5%;
     justify-content: space-between; /* Verteile den Platz zwischen den beiden Gruppen */
 }
 
