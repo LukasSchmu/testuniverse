@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSO Login - Test Universe</title>
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <title>SSO Login</title>
+    <script src="https://alcdn.msauth.net/browser/2.34.0/js/msal-browser.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #log { background: #f4f4f4; padding: 10px; border-radius: 5px; margin-top: 20px; white-space: pre-wrap; }
+    </style>
 </head>
 <body>
-    <div class="sso-container">
-        <img class="logo-image" src="Media/Logo.svg" alt="Logo">
-        <h2>Login with SSO</h2>
-        <p>Please use your company credentials to sign in to test universe.</p>
-        <button id="sso-login-button">Login with SSO</button>
-    </div>
 
-    <!-- JavaScript-Datei -->
-    <script src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.min.js"></script>
-    <script src="script.js"></script>
+    <h2>Microsoft SSO Login</h2>
+    <button id="sso-login-button">Login mit SSO</button>
+
+    <h3>Logs:</h3>
+    <div id="log">Starte...</div>
+
+    <script>
+        function logMessage(message) {
+            const logDiv = document.getElementById("log");
+            logDiv.textContent += `\n${new Date().toLocaleTimeString()} - ${message}`;
+            console.log(message);
+        }
+
+        logMessage("Script gestartet!");
+
+        const msalConfig = {
+            auth: {
+                clientId: "e1e9ecc2-2f89-4640-aa8a-7d9ae189784c",
+                authority: "https://login.microsoftonline.com/common",
+                redirectUri: window.location.href
+            }
+        };
+
+        const msalInstance = new msal.PublicClientApplication(msalConfig);
+        logMessage("MSAL-Instanz erstellt!");
+
+        document.getElementById("sso-login-button").addEventListener("click", function() {
+            logMessage("Login-Button wurde geklickt!");
+            msalInstance.loginRedirect({ scopes: ["User.Read"] })
+                .catch(error => logMessage("Login-Fehler: " + error));
+        });
+    </script>
+
 </body>
 </html>
-
