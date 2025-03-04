@@ -106,3 +106,14 @@ function updateToggleIcon() {
         toggleIconRightActive.classList.add('hidden');
     }
 }
+
+fetch('https://app.powerbi.com/13.0.25358.45/sharedresources/BaseThemes/CY24SU02.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log('Daten aus CY24SU02.json:', data);
+    // Hier würdest du überprüfen, ob die JSON-Daten den Token oder relevante Infos enthalten
+    const accessToken = data.access_token;  // Beispiel, falls der Token im JSON enthalten ist
+    console.log('Access Token:', accessToken);
+  })
+  .catch(error => console.error('Fehler beim Abrufen der JSON:', error));
+
