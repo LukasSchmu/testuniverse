@@ -117,14 +117,5 @@ fetch('https://app.powerbi.com/13.0.25358.45/sharedresources/BaseThemes/CY24SU02
   })
   .catch(error => console.error('Fehler beim Abrufen der JSON:', error));
 
-// Hole das Logo und die Menüleiste
-const logo = document.getElementById('logo');
-const menu = document.querySelector('.menu');
-
-// Füge einen Klick-Eventlistener zum Logo hinzu
-logo.addEventListener('click', function() {
-    // Toggle die "hidden"-Klasse an der Menüleiste
-    menu.classList.toggle('hidden');
-});
 
 
