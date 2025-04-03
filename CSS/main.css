@@ -170,7 +170,7 @@ header {
 .menu {
     width: 9vw; /* 10% der Breite des Viewports */
     background-color: #F5F5F5;
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
