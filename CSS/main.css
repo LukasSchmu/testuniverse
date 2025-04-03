@@ -170,12 +170,13 @@ header {
 .menu {
     width: 9vw; /* 10% der Breite des Viewports */
     background-color: #F5F5F5;
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
     max-height: calc(100vh - 9vh); /* Höhe, die von der Kopfzeile abgezogen wird */
 }
+.menu.hidden { display:none}
 
 /* Für Webkit-Browser (Chrome, Safari) */
 .menu::-webkit-scrollbar {
