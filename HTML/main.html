@@ -12,152 +12,227 @@
     <link rel="stylesheet" href="../CSS/main.css">
     <script src="../JS/roleConfig.js"></script>
 </head>
-
 <body>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <header>
-        <div class="header-inner">
-            <!-- Linker Teil: Logo -->
-            <div class="header-left">
-                <img class="header-image" src="../Media/Logo.svg" alt="Logo" id="logo">
-            </div>
-    
-            <!-- Rechter Teil: Überschrift, Buttons, Suche, Profil -->
-            <div class="header-right">
-                <!-- Container für Überschrift und Untertitel -->
-                <div class="header-text-container">
-                    <div class="header-title">TEST UNIVERS</div>
-                    <div class="header-subtitle">ANALYTICS</div>
-                </div>
-    
-                <!-- Container für Buttons -->
-                <div class="header-buttons-container">
-    <button id="MS-button" class="header-button" style="display: none;">
-        <img src="../Media/Zauberstab.png" alt="Icon" class="button-icon">
-        MAGIC SLIDE
-    </button> 
-</div>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
 
-    
-                    <!-- Container für den Toggle mit Icons -->
-                    <div class="toggle-container"  style="display: none;">
-                        <!-- Links: FTW Icons -->
-                        <img src="../Media/Footwear.png" alt="FTW Icon" class="toggle-icon" id="toggleIconLeft">
-                        <img src="../Media/Footwear_disabled.png" alt="FTW Icon" class="toggle-icon hidden" id="toggleIconLeftActive">
-    
-                        <!-- Toggle Switch -->
-                        <label class="switch">
-                            <input type="checkbox" id="toggleSwitch" onchange="updateToggleIcon()">
-                            <span class="slider round"></span>
-                        </label>
-    
-                        <!-- Rechts: APP Icons -->
-                        <img src="../Media/Apparel.svg.png" alt="APP Icon" class="toggle-icon hidden" id="toggleIconRightActive">
-                        <img src="../Media/Apparel_disabled.svg.png" alt="APP Icon" class="toggle-icon" id="toggleIconRight">
-                    </div>
-                </div>
-    
-    
-                <div class="profile-container">
-                    <img src="../Media/refresh.svg" alt="refresh" class="refresh-icon" id="profile-pic">
-                    <div class="profile-text">
-                        <div class="profile-name">LUKAS</div>
-                        <div class="profile-name2">SCHMUCK</div>
-                    </div>
-                    <img src="../Media/Lukas.jpg" alt="Profilbild" class="profile-image" id="profile-pic">
-                    <!-- Transparenter Button für das Profil-Overlay -->
-                    <button class="transparent-button" id="open-profile-popup"></button>
-    
-                    <!-- Schwarzer Logout-Button, der standardmäßig verborgen ist -->
-                    <button id="logout-button" style="display: none; background-color: black; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Logout</button>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Overlay für das Pop-up -->
-        <div id="overlay" class="overlay" style="display: none;">
-            <div class="popup-content">
-                <img src="../Media/Zauberstab_black.svg" alt="Icon" class="ms-icon">
-                <h2>MAGIC SLIDES</h2>
-                <p>Use the following individual link to connect your Power BI reports.</p>
+        .header-container {
+            display: flex;
+            flex-direction: column;
+        }
 
-                <!-- Eingabefeld für den Link -->
-                <input type="text" id="link-field" value="" readonly>
-                <button id="copy-link">Copy</button>
+        .top-bar {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 10px;
+        }
 
-                <button id="close-popup">Close</button>
-                <a href="https://adidasgroup.sharepoint.com/sites/AC-TProductExcellence/_layouts/15/download.aspx?UniqueId=cd05a1ba%2Dc2eb%2D4e98%2D8e29%2Dee244dd9486a" target="_blank">
-                    <img src="../Media/MS_Download_Template.svg" alt="Icon" class="ms-download">
-                </a>
-            </div>
+        .logo {
+            width: 1.5vw;
+            margin-left: 10px;
+        }
+
+        nav { margin-left: auto; }
+
+        .nav-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            list-style-type: none;
+            padding: 5px 5px;
+            font-size: small;
+            display: block;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Dropdown Menü */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            width: 350px;
+            padding: 15px;
+            box-sizing: border-box;
+            z-index: 1;
+            justify-content: space-between;
+        }
+
+        .dropdown-menu.show {
+            display: flex;
+        }
+
+        .dropdown-column {
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .dropdown-column a {
+            display: flex;
+            padding: 9px 0;
+            color: black;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .dropdown-column a:hover {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+        }
+
+        .nav-link:hover {
+        color: rgb(52, 52, 52)
+        }
+
+        .app-icon {
+            width: 25px;
+            height: auto;
+            margin-right: 10px;
+            margin-left: 10px;
+            font-size: 10px;
+        }
+        .iframe-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 50px); /* Höhe des Viewports minus Header */
+    overflow: hidden;
+    background-color: #f2f2f2;
+    margin-top: 50px; /* Platz für den Header */
+}
+
+.iframe-container::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 16:9 Verhältnis (100 / 16 * 9 = 56.25%) */
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header-container">
+        <div class="top-bar">
+            <img src="../Media/logo.svg" class="logo">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="apps-link">Apps</a>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <div class="dropdown-column">
+                                <a href="#"><img src="../Media/TestLevel.png" class="app-icon"> Test Level</a>
+                                <a href="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"><img src="../Media/Fit.svg" class="app-icon"> Fitverse</a>
+                                <a href="#"><img src="../Media/Last.svg" class="app-icon"> Last Test</a>
+                                <a href="https://apps.powerapps.com/play/e/8416b444-18d1-e776-b4c2-54a7bbbec755/a/4866efe0-311f-44dc-96b1-80c4bc4b8e13?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&&source=iframe&embed=true"><img src="../Media/wear.svg" class="app-icon"> Wear Test</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <a href="#"><img src="../Media/Performance-Test.svg" class="app-icon"> Performance Test</a>
+                                <a href="#"><img src="../Media/lab.svg" class="app-icon"> Lab</a>
+                                <a href="#"><img src="../Media/Biomechanic.png" class="app-icon"> Biomechanic</a>
+                                <a href="#"><img src="../Media/Standards.svg" class="app-icon"> S&P</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <p style="font-size: 12px;">Schmuck, Lukas</p>
         </div>
     </header>
 
-    <main class="main-container">
-        <!-- Linker Bereich mit Menü -->
-        <nav class="menu" role="navigation">
-            <div class="menu-item">
-                <img src="../Media/Overview.svg" alt="Overview Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="overview-link">Overview</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=overviewId" disabled></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Test Level.svg" alt="Test Level Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="test-level-link">Test Level</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=6b657013-5a87-435b-8f90-66f483214cb6&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Fit-Test.svg" alt="Fit Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="fitverse-link">Fitverse</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Last.svg" alt="Fit Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="fitverseO-link">Last Test</a>
-                <button class="menu-button" data-url="https://apps.powerapps.com/play/e/e74681ce-cebb-eefe-9cd1-31b9ab470a5a/a/693d75c4-2688-4d5b-a7ce-f063fccd824a?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&source=iframe&embed=true"></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Wear-Test.png" alt="Wear Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="wear-link">Wear</a>
-                <button class="menu-button" data-url="https://apps.powerapps.com/play/e/8416b444-18d1-e776-b4c2-54a7bbbec755/a/4866efe0-311f-44dc-96b1-80c4bc4b8e13?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&&source=iframe&embed=true" ></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Performance-Test.svg" alt="Performance Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="performance-link">Performance</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=performanceId" disabled></button>
-            </div>
- <div class="menu-item">
-                <img src="../Media/key.svg" alt="Biomechanical Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="Admin-link">Permissions</a>
-                <button class="menu-button" data-url="https://apps.powerapps.com/play/e/8416b444-18d1-e776-b4c2-54a7bbbec755/a/8c63bb13-6d63-43be-8b95-7b132e69d6f0?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&source=iframe&embed=true"></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Lab-Test.svg" alt="Lab Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="lab-link">Lab</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=labId" disabled></button>
-            </div>
-            <div class="menu-item">
-                <img src="../Media/Biomechanic.png" alt="Biomechanical Icon" class="menu-icon">
-                <a href="#" class="menu-link" id="biomechanical-link">Biomechanical</a>
-                <button class="menu-button" data-url="https://app.powerbi.com/reportEmbed?reportId=biomechanicalId" disabled></button>
-            </div>
-        </nav>
+    <div class="iframe-container">
+        <div class="iframe-overlay"></div>
+        <iframe
+            id="powerbi-iframe"
+            title="TST_Fitverse Analytics v1.3"
+            width="100%"
+            src="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"
+            frameborder="0"
+            allowFullScreen="true">
+        </iframe>
+    </div>
+</main>
 
-        <!-- I-Frame für Analytics -->
-        <div class="iframe-container">
-            <div class="iframe-overlay"></div>
-            <iframe
-                id="powerbi-iframe"
-                title="TST_Fitverse Analytics v1.3"
-                width="1140"
-                height="541.25"
-                src="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"
-                frameborder="0"
-                allowFullScreen="true">
-            </iframe>
-        </div>
-    </main>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const appsLink = document.getElementById("apps-link");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+    const iframe = document.getElementById("powerbi-iframe");
 
+    // Links im Dropdown-Menü
+    const links = document.querySelectorAll(".dropdown-column a");
+
+    // Event listener für jeden Link, um den iframe-Content zu ändern
+    links.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            // Setze die URL des iFrames je nach dem geklickten Link
+            const newSrc = link.getAttribute("href");
+            iframe.src = newSrc;
+
+            // Menü schließen
+            dropdownMenu.classList.remove("show");
+        });
+    });
+
+    appsLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        dropdownMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!appsLink.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove("show");
+        }
+    });
+
+    dropdownMenu.addEventListener("click", function (event) {
+        event.stopPropagation(); // Verhindert, dass ein Klick ins Menü es wieder schließt
+    });
+});
+
+
+    </script>
+ 
     <!-- JavaScript-Datei einbinden -->
     <script src="../JS/main.js"></script>
     <script src="../JS/Fitverse.js"></script>
