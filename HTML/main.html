@@ -149,6 +149,22 @@
     display: inline-block; /* Keeps inline with other elements */
 }
 
+.title {
+    font-weight: bold;
+    display: block;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: gray;
+    display: block;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
 
 
 
@@ -161,23 +177,68 @@
             <nav>
                 <ul class="nav-list">
                     <li class="nav-item">
-                         <a href="#" class="nav-link" id="apps-link"><img src="../Media/app.svg" alt="Apps" class="app-image"></a>
+                        <a href="#" class="nav-link" id="apps-link">
+                            <img src="../Media/app.svg" alt="Apps" class="app-image">
+                        </a>
                         <div class="dropdown-menu" id="dropdown-menu">
                             <div class="dropdown-column">
-                                <a href="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false"><img src="../Media/Fit.svg" class="app-icon"> Fitverse</a>
-                                <a href="#"><img src="../Media/Last.svg" class="app-icon"> Last Test</a>
-                                <a href="https://apps.powerapps.com/play/e/8416b444-18d1-e776-b4c2-54a7bbbec755/a/4866efe0-311f-44dc-96b1-80c4bc4b8e13?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&&source=iframe&embed=true"><img src="../Media/wear.svg" class="app-icon"> Wear Test</a>
+                                <a href="https://app.powerbi.com/reportEmbed?reportId=c3e8673f-b2bd-44e4-842d-85d0a7f43c52&autoAuth=true&ctid=3bfeb222-e42c-4535-aace-ea6f7751369b&navContentPaneEnabled=false">
+                                    <img src="../Media/Fit.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Fitverse</span>
+                                        <span class="subtitle">Power BI Dashboard</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <img src="../Media/Last.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Last Test</span>
+                                        <span class="subtitle">Letzte Testdaten</span>
+                                    </div>
+                                </a>
+                                <a href="https://apps.powerapps.com/play/e/8416b444-18d1-e776-b4c2-54a7bbbec755/a/4866efe0-311f-44dc-96b1-80c4bc4b8e13?tenantId=3bfeb222-e42c-4535-aace-ea6f7751369b&&source=iframe&embed=true">
+                                    <img src="../Media/wear.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Wear Test</span>
+                                        <span class="subtitle">Tragetest & Feedback</span>
+                                    </div>
+                                </a>
                             </div>
                             <div class="dropdown-column">
-                                <a href="#"><img src="../Media/Performance-Test.svg" class="app-icon"> Performance Test</a>
-                                <a href="#"><img src="../Media/lab.svg" class="app-icon"> Lab</a>
-                                <a href="#"><img src="../Media/Biomechanic.png" class="app-icon"> Biomechanic</a>
-                                <a href="#"><img src="../Media/Standards.svg" class="app-icon"> S&P</a>
+                                <a href="#">
+                                    <img src="../Media/Performance-Test.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Performance Test</span>
+                                        <span class="subtitle">Leistungsanalysen</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <img src="../Media/lab.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Lab</span>
+                                        <span class="subtitle">Laborexperimente</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <img src="../Media/Biomechanic.png" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">Biomechanic</span>
+                                        <span class="subtitle">Bewegungsanalysen</span>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <img src="../Media/Standards.svg" class="app-icon">
+                                    <div class="text-container">
+                                        <span class="title">S&P</span>
+                                        <span class="subtitle">Standards & Protokolle</span>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </li>
                 </ul>
             </nav>
+            
             <p style="font-size: 12px;">Schmuck, Lukas</p>
         </div>
     </header>
